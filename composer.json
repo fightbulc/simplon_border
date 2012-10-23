@@ -1,5 +1,5 @@
 {
-    "name": "simplon/router",
+    "name": "simplon/border",
     "description": "Request and Response handler incl. JSON-RPC",
     "homepage": "https://github.com/fightbulc/simplon_router",
     "version": "0.5.0",
