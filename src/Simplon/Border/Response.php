@@ -135,7 +135,7 @@
       $this->releaseResponseHeaders();
 
       // send body
-      echo json_encode($data, JSON_FORCE_OBJECT);
+      echo json_encode($data);
     }
 
     // ##########################################
