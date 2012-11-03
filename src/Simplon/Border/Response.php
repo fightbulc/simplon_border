@@ -64,6 +64,21 @@
     // ##########################################
 
     /**
+     * @param $code
+     * @return Response
+     */
+    public function setStatusCode($code)
+    {
+      $this
+        ->getHeadersInstance()
+        ->setStatusCode($code);
+
+      return $this;
+    }
+
+    // ##########################################
+
+    /**
      * @param $data
      * @param string $encoding
      */
@@ -101,6 +116,7 @@
 
     /**
      * @param $data
+     * @return bool
      */
     public function sendJson($data)
     {
@@ -126,18 +142,26 @@
 
     /**
      * @param $id
+     * @param string $type
      * @param $result
+     * @return bool
      */
-    public function sendJsonRpc($id, $result)
+    public function sendJsonRpc($id, $type = 'result', $result)
     {
+      // validate type
+      if(! in_array($type, array('result', 'error')))
+      {
+        $type = 'result';
+      }
+
       // set structure
       $data = array(
-        'id'     => $id,
-        'result' => $result,
+        'id'  => $id,
+        $type => $result,
       );
 
       // and now sendJson
-      $this->sendJson($data);
+      return $this->sendJson($data);
     }
 
     // ##########################################

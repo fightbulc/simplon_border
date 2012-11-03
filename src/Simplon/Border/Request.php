@@ -40,16 +40,13 @@
 
       if($this->getMethod() == 'post')
       {
+        // try to read json rpc
+        $this->readJsonRpc();
+
         // get POST data
         if(! empty($_POST))
         {
           $this->setParams($_POST);
-        }
-
-        // check for JSON-RPC
-        else
-        {
-          $this->readJsonRpc();
         }
       }
     }
@@ -64,13 +61,27 @@
       $json = file_get_contents('php://input');
       $data = json_decode($json, TRUE);
 
-      if(isset($data['id']) && isset($data['method']) && isset($data['params']))
+      $params = isset($data['params']) ? $data['params'] : array();
+
+      // json-rpc request
+      if(isset($data['id']) && isset($data['method']))
       {
         $this
           ->setByKey('isJsonRpc', TRUE)
           ->setByKey('jsonRpcId', $data['id'])
           ->setByKey('jsonRpcMethod', $data['method'])
-          ->setByKey('jsonRpcParams', $data['params']);
+          ->setByKey('jsonRpcParams', $params);
+
+        return TRUE;
+      }
+
+      // json-rpc notification
+      elseif(isset($data['method']))
+      {
+        $this
+          ->setByKey('isJsonRpcNotification', TRUE)
+          ->setByKey('jsonRpcMethod', $data['method'])
+          ->setByKey('jsonRpcParams', $params);
 
         return TRUE;
       }
@@ -280,6 +291,13 @@
     // ##########################################
 
     public function isJsonRpc()
+    {
+      return $this->getByKey('isJsonRpc');
+    }
+
+    // ##########################################
+
+    public function isJsonRpcNotification()
     {
       return $this->getByKey('isJsonRpc');
     }
