@@ -141,27 +141,25 @@
     // ##########################################
 
     /**
-     * @param $id
-     * @param string $type
-     * @param $result
+     * @param $data
      * @return bool
      */
-    public function sendJsonRpc($id, $type = 'result', $result)
+    public function sendJsonRpc($type, $data, $id)
     {
-      // validate type
-      if(! in_array($type, array('result', 'error')))
-      {
-        $type = 'result';
-      }
-
-      // set structure
-      $data = array(
-        'id'  => $id,
-        $type => $result,
+      // set basic structure
+      $jsonRpc = array(
+        $type => $data,
       );
 
+      // set id if existing
+      if($id)
+      {
+        $jsonRpc['id'] = $id;
+      }
+
+
       // and now sendJson
-      return $this->sendJson($data);
+      return $this->sendJson($jsonRpc);
     }
 
     // ##########################################
