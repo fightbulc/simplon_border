@@ -111,7 +111,7 @@
 
     /**
      * @param $key
-     * @return bool
+     * @return mixed
      */
     protected function getByKey($key)
     {
@@ -122,9 +122,7 @@
         return FALSE;
       }
 
-      $value = $this->_data[$key];
-
-      return ! is_array($value) ? strtolower($value) : $value;
+      return $this->_data[$key];
     }
 
     // ##########################################
@@ -159,7 +157,7 @@
 
     public function getMethod()
     {
-      return $this->getByKey('request_method');
+      return strtolower($this->getByKey('request_method'));
     }
 
     // ##########################################
