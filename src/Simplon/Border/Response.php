@@ -4,19 +4,7 @@
 
   class Response
   {
-    /**
-     * Chaining before PHP 5.4
-     *
-     * @return Response
-     */
-    public static function init()
-    {
-      return new Response();
-    }
-
-    // ##########################################
-
-    protected function __construct()
+    public function __construct()
     {
       $this
         ->getHeadersInstance()
