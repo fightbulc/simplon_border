@@ -1,7 +1,7 @@
 {
     "name": "simplon/border",
     "description": "Request and Response handler incl. JSON-RPC",
-    "homepage": "https://github.com/fightbulc/simplon_router",
+    "homepage": "https://github.com/fightbulc/simplon_border",
     "version": "0.5.0",
     "type": "library",
     "keywords": ["request", "respond", "json-rpc"],
