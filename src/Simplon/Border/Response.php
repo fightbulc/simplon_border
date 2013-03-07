@@ -129,22 +129,24 @@
     // ##########################################
 
     /**
+     * @param $type
      * @param $data
+     * @param $id
      * @return bool
      */
     public function sendJsonRpc($type, $data, $id)
     {
       // set basic structure
       $jsonRpc = array(
-        $type => $data,
+        'jsonrpc' => '2.0',
+        $type     => $data,
       );
 
       // set id if existing
       if($id)
       {
-        $jsonRpc['id'] = $id;
+        $jsonRpc['id'] = (int)$id;
       }
-
 
       // and now sendJson
       return $this->sendJson($jsonRpc);
