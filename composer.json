@@ -1,29 +1,29 @@
 {
-    "name": "simplon/border",
-    "description": "Request and Response handler incl. JSON-RPC",
-    "homepage": "https://github.com/fightbulc/simplon_border",
-    "version": "0.5.1",
-    "type": "library",
-    "keywords": ["request", "response", "json-rpc"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Tino Ehrich",
-            "email": "opensource@efides.com",
-            "role": "developer"
-        }
-    ],
-
-    "minimum-stability": "dev",
-
-    "require": {
-        "php": ">=5.3.3",
-        "ext-json": "*"
-    },
-
-    "autoload": {
-        "psr-0": {
-            "Simplon\\Border\\": "src/"
-        }
+  "name": "simplon/border",
+  "description": "Request and Response handler incl. JSON-RPC",
+  "homepage": "https://github.com/fightbulc/simplon_border",
+  "version": "0.5.2",
+  "type": "library",
+  "keywords": ["request", "response", "json-rpc"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tino Ehrich",
+      "email": "opensource@efides.com",
+      "role": "developer"
     }
+  ],
+
+  "minimum-stability": "dev",
+
+  "require": {
+    "php": ">=5.4",
+    "ext-json": "*"
+  },
+
+  "autoload": {
+    "psr-0": {
+      "Simplon\\Border": "src/"
+    }
+  }
 }
