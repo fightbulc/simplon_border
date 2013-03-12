@@ -8,7 +8,7 @@
     private static $_instance;
 
     /** @var array */
-    private $_data = array();
+    private $_data = [];
 
     // ##########################################
 
@@ -61,7 +61,7 @@
       $json = file_get_contents('php://input');
       $data = json_decode($json, TRUE);
 
-      $params = isset($data['params']) ? $data['params'] : array();
+      $params = isset($data['params']) ? $data['params'] : [];
 
       // json-rpc request
       if(isset($data['id']) && isset($data['method']))
@@ -127,6 +127,9 @@
 
     // ##########################################
 
+    /**
+     * @return array
+     */
     public function getData()
     {
       return $this->_data;
@@ -134,6 +137,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getServerIp()
     {
       return $this->getByKey('server_addr');
@@ -141,6 +147,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getServerPort()
     {
       return $this->getByKey('server_port');
@@ -148,6 +157,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getProtocol()
     {
       return $this->getByKey('server_protocol');
@@ -155,6 +167,9 @@
 
     // ##########################################
 
+    /**
+     * @return string
+     */
     public function getMethod()
     {
       return strtolower($this->getByKey('request_method'));
@@ -162,6 +177,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getTime()
     {
       return $this->getByKey('request_time');
@@ -169,6 +187,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getScriptName()
     {
       return $this->getByKey('script_name');
@@ -176,6 +197,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getUri()
     {
       return $this->getByKey('request_uri');
@@ -183,6 +207,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getQueryString()
     {
       return $this->getByKey('query_string');
@@ -190,6 +217,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttpCacheControl()
     {
       return $this->getByKey('http_cache_control');
@@ -197,6 +227,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttpAccept()
     {
       return $this->getByKey('http_accept');
@@ -204,6 +237,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttpAcceptCharset()
     {
       return $this->getByKey('http_accept_charset');
@@ -211,6 +247,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttpAcceptEncoding()
     {
       return $this->getByKey('http_accept_encoding');
@@ -218,6 +257,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttpAcceptLanguage()
     {
       return $this->getByKey('http_accept_language');
@@ -225,6 +267,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttpConnection()
     {
       return $this->getByKey('http_connection');
@@ -232,6 +277,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttpHost()
     {
       return $this->getByKey('http_host');
@@ -246,6 +294,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttpUserAgent()
     {
       return $this->getByKey('http_user_agent');
@@ -253,6 +304,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getHttps()
     {
       return $this->getByKey('https');
@@ -260,6 +314,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getRemoteIp()
     {
       return $this->getByKey('remote_addr');
@@ -267,6 +324,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getRemotePort()
     {
       return $this->getByKey('remote_port');
@@ -274,6 +334,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getRemoteUser()
     {
       return $this->getByKey('remote_user');
@@ -281,6 +344,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getPathInfo()
     {
       return $this->getByKey('path_info');
@@ -288,6 +354,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function isJsonRpc()
     {
       return $this->getByKey('isJsonRpc');
@@ -295,6 +364,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function isJsonRpcNotification()
     {
       return $this->getByKey('isJsonRpc');
@@ -302,6 +374,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getJsonRpcId()
     {
       return $this->getByKey('jsonRpcId');
@@ -309,6 +384,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getJsonRpcMethod()
     {
       return $this->getByKey('jsonRpcMethod');
@@ -316,6 +394,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getJsonRpcParams()
     {
       return $this->getByKey('jsonRpcParams');
@@ -323,6 +404,10 @@
 
     // ##########################################
 
+    /**
+     * @param $params
+     * @return $this
+     */
     public function setParams($params)
     {
       $this->setByKey('params', $params);
@@ -332,6 +417,9 @@
 
     // ##########################################
 
+    /**
+     * @return mixed
+     */
     public function getParams()
     {
       return $this->getByKey('params');

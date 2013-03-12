@@ -111,7 +111,7 @@
       // enforce array
       if(! is_array($data))
       {
-        $data = array($data);
+        $data = [$data];
       }
 
       // set content header
@@ -137,10 +137,10 @@
     public function sendJsonRpc($type, $data, $id)
     {
       // set basic structure
-      $jsonRpc = array(
+      $jsonRpc = [
         'jsonrpc' => '2.0',
         $type     => $data,
-      );
+      ];
 
       // set id if existing
       if($id)

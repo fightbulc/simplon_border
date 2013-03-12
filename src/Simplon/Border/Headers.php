@@ -13,56 +13,56 @@
     private static $_instance;
 
     /** @var array */
-    private $_headers = array();
+    private $_headers = [];
 
     /** @var array */
-    private $_statusCodes = array(
-      100 => array('HTTP/1.1', 'Continue'),
-      101 => array('HTTP/1.1', 'Switching Protocols'),
-      200 => array('HTTP/1.1', 'OK'),
-      201 => array('HTTP/1.1', 'Created'),
-      202 => array('HTTP/1.1', 'Accepted'),
-      203 => array('HTTP/1.1', 'Non-Authoritative Information'),
-      204 => array('HTTP/1.1', 'No Content'),
-      205 => array('HTTP/1.1', 'Reset Content'),
-      206 => array('HTTP/1.1', 'Partial Content'),
-      300 => array('HTTP/1.1', 'Multiple Choices'),
-      301 => array('HTTP/1.1', 'Permanently at another address - consider updating link'),
-      302 => array('HTTP/1.1', 'Found at new location - consider updating link'),
-      303 => array('HTTP/1.1', 'See Other'),
-      304 => array('HTTP/1.1', 'Not Modified'),
-      305 => array('HTTP/1.1', 'Use Proxy'),
-      306 => array('HTTP/1.1', 'Switch Proxy'),
+    private $_statusCodes = [
+      100 => ['HTTP/1.1', 'Continue'],
+      101 => ['HTTP/1.1', 'Switching Protocols'],
+      200 => ['HTTP/1.1', 'OK'],
+      201 => ['HTTP/1.1', 'Created'],
+      202 => ['HTTP/1.1', 'Accepted'],
+      203 => ['HTTP/1.1', 'Non-Authoritative Information'],
+      204 => ['HTTP/1.1', 'No Content'],
+      205 => ['HTTP/1.1', 'Reset Content'],
+      206 => ['HTTP/1.1', 'Partial Content'],
+      300 => ['HTTP/1.1', 'Multiple Choices'],
+      301 => ['HTTP/1.1', 'Permanently at another address - consider updating link'],
+      302 => ['HTTP/1.1', 'Found at new location - consider updating link'],
+      303 => ['HTTP/1.1', 'See Other'],
+      304 => ['HTTP/1.1', 'Not Modified'],
+      305 => ['HTTP/1.1', 'Use Proxy'],
+      306 => ['HTTP/1.1', 'Switch Proxy'],
       // No longer used, but reserved
-      307 => array('HTTP/1.1', 'Temporary Redirect'),
-      400 => array('HTTP/1.1', 'Bad Request'),
-      401 => array('HTTP/1.1', 'Authorization Required'),
-      402 => array('HTTP/1.1', 'Payment Required'),
-      403 => array('HTTP/1.1', 'Forbidden'),
-      404 => array('HTTP/1.1', 'Not Found'),
-      405 => array('HTTP/1.1', 'Method Not Allowed'),
-      406 => array('HTTP/1.1', 'Not Acceptable'),
-      407 => array('HTTP/1.1', 'Proxy Authentication Required'),
-      408 => array('HTTP/1.1', 'Request Timeout'),
-      409 => array('HTTP/1.1', 'Conflict'),
-      410 => array('HTTP/1.1', 'Gone'),
-      411 => array('HTTP/1.1', 'Length Required'),
-      412 => array('HTTP/1.1', 'Precondition Failed'),
-      413 => array('HTTP/1.1', 'Request Entity Too Large'),
-      414 => array('HTTP/1.1', 'Request-URI Too Long'),
-      415 => array('HTTP/1.1', 'Unsupported Media Type'),
-      416 => array('HTTP/1.1', 'Requested Range Not Satisfiable'),
-      417 => array('HTTP/1.1', 'Expectation Failed'),
-      449 => array('HTTP/1.1', 'Retry With'),
+      307 => ['HTTP/1.1', 'Temporary Redirect'],
+      400 => ['HTTP/1.1', 'Bad Request'],
+      401 => ['HTTP/1.1', 'Authorization Required'],
+      402 => ['HTTP/1.1', 'Payment Required'],
+      403 => ['HTTP/1.1', 'Forbidden'],
+      404 => ['HTTP/1.1', 'Not Found'],
+      405 => ['HTTP/1.1', 'Method Not Allowed'],
+      406 => ['HTTP/1.1', 'Not Acceptable'],
+      407 => ['HTTP/1.1', 'Proxy Authentication Required'],
+      408 => ['HTTP/1.1', 'Request Timeout'],
+      409 => ['HTTP/1.1', 'Conflict'],
+      410 => ['HTTP/1.1', 'Gone'],
+      411 => ['HTTP/1.1', 'Length Required'],
+      412 => ['HTTP/1.1', 'Precondition Failed'],
+      413 => ['HTTP/1.1', 'Request Entity Too Large'],
+      414 => ['HTTP/1.1', 'Request-URI Too Long'],
+      415 => ['HTTP/1.1', 'Unsupported Media Type'],
+      416 => ['HTTP/1.1', 'Requested Range Not Satisfiable'],
+      417 => ['HTTP/1.1', 'Expectation Failed'],
+      449 => ['HTTP/1.1', 'Retry With'],
       // Microsoft extension
-      500 => array('HTTP/1.1', 'Internal Server Error'),
-      501 => array('HTTP/1.1', 'Not Implemented'),
-      502 => array('HTTP/1.1', 'Bad Gateway'),
-      503 => array('HTTP/1.1', 'Service Unavailable'),
-      504 => array('HTTP/1.1', 'Gateway Timeout'),
-      505 => array('HTTP/1.1', 'HTTP Version Not Supported'),
-      509 => array('HTTP/1.1', 'Bandwidth Limit Exceeded') // not an official HTTP status code
-    );
+      500 => ['HTTP/1.1', 'Internal Server Error'],
+      501 => ['HTTP/1.1', 'Not Implemented'],
+      502 => ['HTTP/1.1', 'Bad Gateway'],
+      503 => ['HTTP/1.1', 'Service Unavailable'],
+      504 => ['HTTP/1.1', 'Gateway Timeout'],
+      505 => ['HTTP/1.1', 'HTTP Version Not Supported'],
+      509 => ['HTTP/1.1', 'Bandwidth Limit Exceeded'], // not an official HTTP status code
+    ];
 
     // ##########################################
 
@@ -133,7 +133,7 @@
      */
     public function reset()
     {
-      $this->_headers = array();
+      $this->_headers = [];
 
       return $this;
     }
@@ -201,11 +201,11 @@
         return FALSE;
       }
 
-      $statusParts = array(
+      $statusParts = [
         $this->_statusCodes[$code][0],
         $code,
         $this->_statusCodes[$code][1],
-      );
+      ];
 
       return implode(' ', $statusParts);
     }
