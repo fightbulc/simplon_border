@@ -134,7 +134,7 @@
      * @param $id
      * @return bool
      */
-    public function sendJsonRpc($type, $data, $id)
+    public function sendJsonRpc($type, $data, $id = NULL)
     {
       // set basic structure
       $jsonRpc = [
