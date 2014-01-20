@@ -2,7 +2,7 @@
   "name": "simplon/border",
   "description": "Request and Response handler incl. JSON-RPC",
   "homepage": "https://github.com/fightbulc/simplon_border",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "type": "library",
   "keywords": ["request", "response", "json-rpc"],
   "license": "MIT",
