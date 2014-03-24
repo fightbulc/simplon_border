@@ -41,22 +41,13 @@
         {
             $this->_data = $_SERVER;
 
-            if ($this->isGetRequest())
-            {
-                $this->setParams($_GET);
-            }
-
             if ($this->isPostRequest())
             {
                 // try to read json rpc
                 $this->readJsonRpc();
-
-                // get POST data
-                if (!empty($_POST))
-                {
-                    $this->setParams($_POST);
-                }
             }
+
+            $this->setParams($_REQUEST);
 
             return TRUE;
         }
